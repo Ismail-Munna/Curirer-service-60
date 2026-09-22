@@ -138,7 +138,15 @@ const handleStripeWebhook = async (payload: Buffer, signature: string) => {
 
     const deliveryOtp = crypto.randomInt(100000, 999999).toString();
 
-    
+    await prisma.$transaction(async (tx) => {
+      await tx.payment.update({
+        where: { id: paymentId },
+        data: {
+          status: 'SUCCESS',
+          transactionId: session.payment_intent as string,
+          gatewayResponse: session as any,
+        },
+      });
 
       const updatedShipment = await tx.shipment.update({
         where: { id: shipmentId },

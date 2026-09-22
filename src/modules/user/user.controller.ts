@@ -17,6 +17,17 @@ const getMyProfile = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const updateMyProfile = catchAsync(async (req: Request, res: Response) => {
+  const userId = req.user!.id;
+  const result = await userService.updateMyProfile(userId, req.body);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "User profile updated successfully",
+    data: result,
+  });
+});
 
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   const filters = {

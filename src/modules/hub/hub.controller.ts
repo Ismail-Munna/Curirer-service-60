@@ -23,11 +23,7 @@ const createHub = await catchAsync(async(req:Request,res:Response)=>{
 const getAllHubs = catchAsync(async (req: Request, res: Response) => {
   const result = await hubService.getAllHubsFromDB(req.query);
   sendResponse(res, {
-    statusCode: 200,
-    success: true,
-    message: 'All Hubs Found Successfully',
-    meta: result.meta,
-    data: result.data,
+  
   });
 });
 

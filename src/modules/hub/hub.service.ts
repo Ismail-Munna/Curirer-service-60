@@ -84,17 +84,6 @@ export const getAllHubsFromDB = async (filters: IHubFilterOptions) => {
 };
 
 
-export const getHubByIdFromDB = async (id: string) => {
-  const hub = await prisma.hub.findFirst({
-    where: { id, deletedAt: null },
-  });
-
-  if (!hub) {
-    throw new Error('Hubs Are Not Found');
-  }
-
-  return hub;
-};
 
 const updateHubInDB = async(id : string,payload: IUpdateHubPayload)=>{
   const hub = await prisma.hub.findFirst({

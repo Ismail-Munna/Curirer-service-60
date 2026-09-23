@@ -20,7 +20,7 @@ export const seedAdmin = async() => {
 
         const name =  config.admin_name
 
-        const email  = config.admin_email
+  
 
         const password = config.admin_password
 

@@ -11,11 +11,7 @@ export const uploadCourierDocs = multer({
   },
   fileFilter: (req, file, cb) => {
    
-    if (file.mimetype.startsWith('image/') || file.mimetype === 'application/pdf') {
-      cb(null, true);
-    } else {
-      cb(new Error('Only jpg and pdf can be download'));
-    }
+   
   },
 }).fields([
   { name: 'drivingLicense', maxCount: 1 },
